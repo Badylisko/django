@@ -1,10 +1,16 @@
 {% extends "base.html" %}
 {% block content %}
-    <h1>TAAKI BLONDYN GRUBY</h1>
-    <a href="{% url 'Kontakt' %}">TU</a>
-    <a href="{% url 'register' %}">Rejestracja</a>
-    <div class="Przyciski">
-        <a href="{% url 'login' %}">Zaloguj</a>
-    </div>
-
+    {% for post in posts %}
+        <article class="media content-section">
+          <img class="rounded-circle article-img" src="{{ post.author.profil.image.url }}" height="70" width="70">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="#">{{ post.author }}</a>
+              <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
+            </div>
+            <h2><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>
+            <p class="article-content">{{ post.content }}</p>
+          </div>
+        </article>
+    {% endfor %}
 {% endblock content %}

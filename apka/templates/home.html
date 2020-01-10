@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
     {% for post in posts %}
-        <article class="media content-section">
-          <img class="rounded-circle article-img" src="{{ post.author.profil.image.url }}" height="70" width="70">
+        <article class="media content-section  mt-4">
+          <img class="rounded-circle article-img" src="{{ post.author.profil.image.url }}" height="60" width="60">
           <div class="media-body">
             <div class="article-metadata">
-              <a class="mr-2" href="{% url 'user-posts' post.author.username %}">{{ post.author }}</a>
+              <a class="mr-4" href="{% url 'user-posts' post.author.username %}">{{ post.author }}</a>
               <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
             </div>
             <h2><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>
